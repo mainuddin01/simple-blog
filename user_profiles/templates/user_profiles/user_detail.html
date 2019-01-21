@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+			<div class="tr-content">
+				<div class="row">
+					<div class="col-md-8 col-lg-9 tr-sticky">
+						<div class="theiaStickySidebar">
+							<div class="breadcrumbs">
+								<a href="{% url 'home' %}">Home</a>
+								<span>/&nbsp;</span>Author or user details
+							</div>
+							<div class="blog-post">
+
+								<div class="blog-author clearfix">
+                                    {% if object.author.profile_image %}
+                                        <img alt="Image" src="{{ object.author.profile_image.url }}">
+                                    {% else %}
+									    <img alt="Image" src="http://1.gravatar.com/avatar/1986f5007ea888ec7ba6542025be0310?s=64&amp;r=g">
+                                    {% endif %}
+									<div class="author-desc">
+										<h4>{{ object.username }}</h4>
+										<ul class="author-socials clearfix">
+											<li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
+											<li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
+											<li><a href="#"><i class="fa fa-google-plus fa-lg"></i></a></li>
+											<li><a href="#"><i class="fa fa-linkedin fa-lg"></i></a></li>
+											<li><a href="#"><i class="fa fa-globe fa-lg"></i></a></li>
+										</ul>
+{#										<p>{% if object.author.biography %}{{ object.author.biography }}{% else %}Biography not added yet!{% endif %}</p>#}
+									</div>
+
+                                    <table class="table">
+                                      <tbody>
+                                        <tr>
+                                          <td>First Name:</td>
+                                          <td>{{ object.first_name }}</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Last Name:</td>
+                                          <td>{{ object.last_name }}</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Email:</td>
+                                          <td>{{ object.email }}</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Biography:</td>
+                                          <td>{{ object.biography }}</td>
+                                        </tr>
+                                        {% if object == request.user %}
+                                            <tr>
+                                              <td>Edit profile:</td>
+                                              <td><a class="btn btn-danger" href="{% url 'user_profiles:edit' pk=object.pk %}">Edit</a></td>
+                                            </tr>
+                                        {% endif %}
+                                      </tbody>
+                                    </table>
+
+								</div><!-- /.blog-author -->
+
+								<div class="blog-other-post clearfix">
+									<h5>All posts by this author:</h5>
+									<div class="row">
+                                        {% for post in object.post_set.all %}
+                                            <div class="col-md-6 col-lg-4">
+                                                <div class="masonry-item">
+                                                    <div class="blog-mask">
+                                                        <div class="blog-audio">
+                                                            <a href="{{ post.get_absolute_url }}" class="blog-format-image-hover">
+                                                                <i class="fa fa-external-link fa-3x"></i>
+                                                            </a>
+                                                            <span class="blog-format-audio">{{ post.tags.first.name }}</span>
+                                                            {% if post.image %}
+                                                                <a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid"></a>
+                                                            {% else %}
+                                                                <a href="#"><img src="{% static 'images/new-swedish-263x238.jpg' %}" alt="{{ post.title }}" class="img-fluid"></a>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="blog-list-desc">
+                                                        {% if post.category.count %}
+                                                            {% for category in post.category.all %}
+                                                                <span class="categories"><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></span>
+                                                            {% endfor %}
+                                                        {% else %}
+                                                            <span class="categories"><a href="#">Uncategorized</a></span>
+                                                        {% endif %}
+                                                        <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                                                        <label>
+                                                            <span>{{ post.author }}&nbsp;‐</span>
+                                                            {% if post.publication_date %}
+                                                                {{ post.publication_date }}
+                                                            {% else %}
+                                                                {{ post.created_at }}
+                                                            {% endif %}
+                                                        </label>
+                                                        <p>{{ post.content|truncatewords:15|striptags }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+									</div><!-- /.row -->
+								</div><!-- Other Posts -->
+
+							</div>
+						</div><!-- /.theiaStickySidebar -->
+					</div>
+
+					{% include 'template_snippets/sidebar.html' %}
+
+				</div><!-- /.row -->
+
+			</div><!-- /.tr-content -->
+		</div><!-- /.container -->
+
+{% endblock %}

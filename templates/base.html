@@ -96,7 +96,7 @@
 						<div class="navbar-collapse collapse" id="navbarNav">
 							<div id="dropdown" class="theme-menu nav navbar-nav">
 								<ul>
-									<li class="active"><a href="#">Home</a></li>
+									<li class="active"><a href="/">Home</a></li>
 									<li class="dropdown"><a href="#">Pages</a>
 										<ul class="sub-menu">
 											<li><a href="category.html">Category</a></li>
@@ -171,13 +171,9 @@
 							<div class="widget widget_categories">
 								<h5>Category</h5>
 								<ul>
-									<li><a href="#">Branding</a></li>
-									<li><a href="#">Character Design</a></li>
-									<li><a href="#">Drawing</a></li>
-									<li><a href="#">Editorial Design</a></li>
-									<li><a href="#">Graphic Design</a></li>
-									<li><a href="#">Illustration</a></li>
-									<li><a href="#">Typography</a></li>
+                                    {% for category in categories %}
+									<li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
+                                    {% endfor %}
 								</ul>
 							</div>
 						</div>
@@ -185,8 +181,8 @@
 							<div class="widget widget_meta">
 								<h5>Useful Links</h5>
 								<ul>
-									<li><a href="#">Register</a></li>
-									<li><a href="#">Log in</a></li>
+									<li><a href="{% url 'user_profiles:register' %}">Register</a></li>
+									<li><a href="{% url 'user_profiles:login' %}">Log in</a></li>
 									<li><a href="#">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
 									<li><a href="#">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
 									<li><a href="#">WordPress.org</a></li>

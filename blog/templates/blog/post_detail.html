@@ -87,7 +87,7 @@
 									    <img alt="Image" src="http://1.gravatar.com/avatar/1986f5007ea888ec7ba6542025be0310?s=64&amp;r=g">
                                     {% endif %}
 									<div class="author-desc">
-										<h4>{{ object.author }}</h4>
+										<h4><a class="orange-color" href="{{ object.author.get_absolute_url }}">{{ object.author }}</a></h4>
 										<ul class="author-socials clearfix">
 											<li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
 											<li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>

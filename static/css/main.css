@@ -2458,3 +2458,14 @@ img.mfp-img {
 .fourth-content img {
     width: 100%;
 }
+
+
+/******************************* Added by Mainuddin ***************************/
+.table tr td:first-child {
+	width: 18%;
+	font-weight: bold;
+}
+
+.orange-color {
+    color: #f26522 !important;
+}
