@@ -13,9 +13,25 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+###### for serving static and media files during development time
+from django.conf import settings
+from django.conf.urls.static import static
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from blog.views import HomePageView
 
 urlpatterns = [
+    path('', HomePageView.as_view(), name='home'),
+    path('blog/', include('blog.urls')),
+    path('user/', include('user_profiles.urls')),
+    path('user/', include('django.contrib.auth.urls')),
+    path('summernote/', include('django_summernote.urls')),
     path('admin/', admin.site.urls),
 ]
+
+##### for serving our static and media files during development time
+if settings.DEBUG:
+    urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -5,28 +5,12 @@ from .models import UserProfile
 
 class UserCreateForm(UserCreationForm):
 
-    class Meta():
+    class Meta(UserCreationForm.Meta):
         model = UserProfile
-        fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({'class': 'form-control'})
-        self.fields['password'].widget.attrs.update({'class': 'form-control'})
-        self.fields['first_name'].widget.attrs.update({'class': 'form-control'})
-        self.fields['last_name'].widget.attrs.update({'class': 'form-control'})
-        self.fields['email'].widget.attrs.update({'class': 'form-control'})
-
+        fields = ('first_name', 'last_name', 'email', 'username', 'password1', 'password2', 'profile_image')
 
 class UserEditForm(UserChangeForm):
 
-    class Meta():
+    class Meta(UserChangeForm.Meta):
         model = UserProfile
-        exclude = ('username',)
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['password'].widget.attrs.update({'class': 'form-control'})
-        self.fields['first_name'].widget.attrs.update({'class': 'form-control'})
-        self.fields['last_name'].widget.attrs.update({'class': 'form-control'})
-        self.fields['email'].widget.attrs.update({'class': 'form-control'})
+        fields = ('first_name', 'last_name', 'email', 'profile_image')

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+		<div class="container">
+			<div class="tr-content">
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-3">
+						<div class="login-page">
+							<div class="login-form">
+								<h2>Update Information</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+
+								<form method="POST" id="desilog-registerform" name="desilog-registerform" enctype="multipart/form-data">
+
+									{% csrf_token %}
+
+									{% for hidden in form.hidden_fields %}
+										{{ hidden }}
+									{% endfor %}
+
+									<div class="form-group">
+                                        {% render_field form.first_name class="form-control" placeholder=form.first_name.label %}
+                                        {% for error in form.first_name.errors %}
+                                            <span class="help-block">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {% render_field form.last_name class="form-control" placeholder=form.last_name.label %}
+                                        {% for error in form.last_name.errors %}
+                                            <span class="help-block">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {% render_field form.email class="form-control" placeholder=form.email.label %}
+                                        {% for error in form.email.errors %}
+                                            <span class="help-block">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="custom-file">
+                                        {% render_field form.profile_image class="custom-file-input" placeholder=form.profile_image.label %}
+                                        <label class="custom-file-label text-left" for="{{ form.profile_image.id_for_label }}">{{ form.profile_image.label }}</label>
+                                        {% for error in form.profile_image.errors %}
+                                            <span class="help-block">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+
+						            <!--<div class="form-group">-->
+						                <!--<input type="text" class="form-control" required="required" placeholder="Username">-->
+						                <!--<i class="fa fa-user"></i>-->
+						            <!--</div>-->
+						            <!--<div class="form-group">-->
+						                <!--<input type="email" class="form-control" required="required" placeholder="Email Address">-->
+						                <!--<i class="fa fa-envelope"></i>-->
+						            <!--</div>-->
+
+									<div class="login-links clearfix">
+										<div class="log-links">
+											<label>Registration confirmation will be emailed to you.</label>
+											<a href="#" title="Lost Password"><i class="fa fa-key"></i>Forgot your Password?</a>
+										</div>
+										<div class="login-submit">
+											<input type="submit" value="Update" class="button-primary" id="wp-submit" name="wp-submit">
+										</div>
+									</div>
+								</form>
+							</div>
+						</div><!-- /.login-page -->
+					</div>
+				</div><!-- /.row -->
+			</div><!-- /.tr-content -->
+		</div><!-- /.container -->
+
+
+{% endblock %}

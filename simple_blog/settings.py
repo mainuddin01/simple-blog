@@ -40,8 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # third party apps
+    'widget_tweaks',
+    'django_summernote',
+
     # our apps
     'user_profiles',
+    'blog',
 ]
 
 
@@ -134,3 +139,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = MEDIA_DIR
+
+
+LOGIN_URL = 'user_profiles:login'
+
+LOGIN_REDIRECT_URL = 'home'
+
+LOGOUT_REDIRECT_URL = 'user_profiles:login'

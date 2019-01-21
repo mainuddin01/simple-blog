@@ -1,0 +1,506 @@
+/* iPad Landscape - 1024 x 768 */
+
+@media only screen and (max-width: 1200px) {
+  .inside {
+    width: 960px;
+  }
+  .ticker-flexslider {
+    width: 300px;
+  }
+  .featured-cols,
+  .password-blog-large, 
+  .image-blog-large {
+    width: 302px;
+  }
+  .password-blog-large, 
+  .image-blog-large {
+    height: 391px;
+  }
+  .left-container {
+    width: 680px;
+  }
+  .blist,
+  .password-blog,
+  .blog-list .no-image-fallback {
+    width: 206px;
+  }
+  .password-blog,
+  .blog-list .no-image-fallback {
+    height: 186px;
+  }
+  .home .home-content,
+  .contact-details {
+    width: 100%;
+  }
+  .home .widget_mc4wp_form_widget {
+    margin-left: 25.7em;
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+  .widget-column {
+    width: 300px;
+  }
+  .desilog_widget-video iframe {
+    height: 180px;
+  }
+  footer .widget_search input[type="text"] {
+    width: 240px;
+  }
+  footer .pp-desc {
+    width: 81%;
+  }
+
+  .contact-details {
+    margin-bottom: 20px;
+  }
+  .slide-image,
+  .slide-image .no-image-fallback,
+  .slide-image .password-blog-slider {
+    width: 385px;
+  }
+  .slide-image .no-image-fallback,
+  .slide-image .password-blog-slider {
+    height: 200px;
+  }
+  .featured-flexslider .flex-control-nav {
+    left: 29.3em;
+  }
+  .page-not-found h2 {
+    line-height: 56px;
+  }
+  .blog-post h3 {
+    line-height: 46px;
+  }
+  .author-desc {
+    width: 87%;
+  }
+  .pp-desc {
+    width: 73%;
+  }
+  .home-content .widget_mc4wp_form_widget {
+    padding: 25px;
+  }
+}
+
+/* sm */
+@media (max-width: 991px) { 
+
+  .navbar-toggler {
+    position: absolute;
+    top: 11px;
+    right: 15px;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 6px 8px;
+  }
+  .navbar-toggler-icon {
+    width: inherit;
+    height: inherit;
+  }
+  .nav-right {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .navbar-left {
+    width: 100%;
+  }
+  .navbar-default {
+    min-height: 58px;
+  }
+  .navbar .container {
+    position: relative;
+    min-height: 58px;
+  }
+  .theme-menu ul li {
+    float: none;
+    border-right: 0;
+    margin-bottom: 1px;
+  }
+  .navbar-collapse {
+    margin-top: 58px;
+    border-top: 1px solid #d95b1f;
+  }
+  .navbar-default ul.sub-menu {
+    min-width: 100%;
+  }
+  .ticker-flexslider {
+    width: 260px;
+  }
+  .featured-cols, .password-blog-large, .image-blog-large {
+    width: inherit;
+  }
+  .home-content .widget_mc4wp_form_widget {
+    margin-left: 0;
+  }
+  .theme-menu ul li a:link, 
+  .theme-menu ul li a:visited {
+    padding: 8px 15px;
+    font-size: 14px;
+  }   
+}
+
+/* sm */
+@media (min-width: 768px) and (max-width: 991px) { 
+  .login-signup ul li a:link, 
+  .login-signup ul li a:visited {
+    padding: 16px 10px;
+  }
+  #gmap {
+    height: 450px;
+  }
+  .author-desc {
+    width: 80%;
+  }
+  .search-form input[type="text"] {
+    width: 200px;
+  }
+  .masonry-item {
+    min-height: 490px;
+  }
+  .tr-about-page .home-content {
+    max-width: 470px;
+  }
+
+}
+
+
+/* iPad Portrait - 768 x 1024 */
+
+@media only screen and (max-width: 960px) {
+  .inside {
+    width: 680px;
+  }
+  #main-menu {
+    display: none;
+  }
+  .select-menu {
+    display: block;
+    width: 250px;
+    padding: 4px 10px;
+    margin-top: 17px;
+  }
+  .select2-container {
+    display: block !important;
+  }
+  .header-three .logo {
+    margin-top: 0;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+  footer .widget_categories ul li, 
+  footer .widget_meta ul li, 
+  footer .widget_archive ul li, 
+  footer .widget_pages ul li, 
+  footer .widget_nav_menu ul li, 
+  footer .widget_recent_entries ul li, 
+  footer .widget_recent_comments ul li {
+    width: 100%;
+    margin-right: 0;
+  }
+  .widget-column {
+    width: 206px;
+  }
+
+  .password-blog-large, 
+  .image-blog-large {
+    height: 269px;
+  }
+
+  .pp-desc,
+  footer .pp-desc {
+    width: 71%;
+    float: left;
+  }
+  .members h4 {
+    font-size: 18px;
+  }
+  .members span {
+    font-size: 14px;
+  }
+  .home-content {
+    width: 100%;
+  }
+  .home-content .widget_mc4wp_form_widget {
+    margin-left: 0;
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+  .search-form {
+    float: right;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .social-icons ul li a {
+    font-size: 14px;
+    padding: 16px 5px;
+  }
+  .social-icons {
+    padding-right: 15px;
+  }
+  #header {
+    padding: 0;
+  }
+  .login-signup ul li a:link, 
+  .login-signup ul li a:visited {
+    padding: 12px;
+  }
+  .embed-responsive-item {
+    width: 100%;
+    height: 300px;
+  }
+  .ticker-flexslider {
+    display: none;
+  }
+  .theme-menu ul li {
+    float: none;
+    border-right: 0;
+  }
+  .theme-menu ul li a{
+    font-size: 14px !important;
+  }
+  .navbar-default ul.sub-menu {
+    min-width: 100%;
+  }
+.login-signup ul li a:link, 
+.login-signup ul li a:visited {
+  padding: 16px 15px;
+} 
+.navbar-default .navbar-collapse, 
+.navbar-default .navbar-form {
+  border: none;
+}
+.typo_one-fourth {
+  margin-bottom: 15px;
+}
+  #gmap {
+    height: 300px;
+  }
+.page-not-found, 
+.login-page  {
+  margin: 30px 0;
+}
+.navbar-left  {
+  overflow: hidden;
+}
+.navbar-collapse {
+  padding: 0 15px;
+  margin-right: 0;
+}
+.prev-post, 
+.next-post {
+  width: 100%;
+}
+
+.form-group.text-center {
+  float: left;
+}
+.sidebar {
+  margin-top: 20px;
+}
+footer {
+  padding: 50px 0 30px;
+}
+.footer-widget {
+  padding-bottom: 0;
+}
+  .blog-post h3 {
+   font-size: 24px;
+  }
+
+  .home-content {
+    background: #f2f2f2;
+  }  
+  .blog-list a img {
+    width: 100%;
+  }
+
+}
+
+
+/* iPhone 4-4S-5 Landscape - 568 x 320 */
+
+@media only screen and (max-width: 760px) {
+
+  header {
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+  .logo {
+    margin-bottom: 0;
+  }
+  .search-form {
+    margin-top: 0;
+  }
+  .left-container,
+  .blist, 
+  .password-blog, 
+  .blog-list .no-image-fallback,
+  .blog-mask img,
+  .password-blog-large, 
+  .image-blog-large,
+  .sidebar,
+  .copyright,
+  .footer-menu,
+  .children .comment-details,
+  .children .children .comment-details,
+  .children .children .children .comment-details,
+  .children .children .children .children .comment-details,
+  .children .comment-form .fullname, 
+  .children .comment-form .email-address, 
+  .children .comment-form .weblink,
+  .children .children .comment-form .fullname, 
+  .children .children .comment-form .email-address, 
+  .children .children .comment-form .weblink,
+  .slide-desc,
+  .slide-image,
+  .featured-flexslider img,
+  .slide-image .no-image-fallback,
+  .slide-image .password-blog-slider,
+  .members-list,
+  .members img,
+  .typo_one-fourth img,
+  .no-image-fallback {
+    width: 100%;
+  }
+  .blog-list {
+    width: 100% !important;
+  }
+  .home-content .widget_mc4wp_form_widget {
+    padding-left: 28px;
+    margin-left: 0;
+    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.5);
+    color: #FFF;
+  }
+  .home-content .widget_mc4wp_form_widget h5 {
+    color: #FFF;
+  }
+  .featured-cols,
+  .members,
+  .comment-form .fullname, 
+  .comment-form .email-address, 
+  .comment-form .weblink {
+    margin-right: 0;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  .featured-cols.cols-last {
+    margin-bottom: 30px;
+  }
+  .sidebar .widget,
+  .widget-column {
+    width: 100%;
+    margin-right: 0;
+  }
+  .pp-desc, 
+  footer .pp-desc {
+    width: 84%;
+  }
+  .footer-menu {
+    float: left;
+  }
+  .footer-menu ul li {
+    margin-left: 0;
+    margin-right: 15px;
+  }
+  .select2 {
+    width: 360px !important;
+  }
+  .blog-share ul li,
+  img.avatar {
+    margin-bottom: 10px;
+  }
+  .author-desc, 
+  .comment-details {
+    width: 75%;
+  }
+  .children { 
+    margin-left: 20px;
+  }
+  a.comment-reply-link {
+    position: relative;
+    width: 100%;
+    display: block;
+    margin-bottom: 40px;
+  }
+  .slide-image {
+    margin-bottom: 40px;
+  }
+  .featured-flexslider .flex-control-nav {
+    left: 0;
+  }
+  .blist {
+    margin-right: 0;
+  }
+  .no-comments,
+  .widget-column.last div:last-child,
+  .sidebar div:last-child {
+    margin-bottom: 0;
+  }
+  .sidebar .widget {
+    float: none;
+  }
+  .home-content {
+    background: #f2f2f2;
+  }
+  .page-not-found h2 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 479px) {
+  .ticker-flexslider {
+    display: none;
+  }  
+  .social-icons {
+    display: none;
+  }
+  .breadcrumbs {
+    padding: 15px;
+  } 
+  .search-form{
+   display: none;
+  } 
+  .logo-search {
+    padding: 20px 0;
+  } 
+  .page-not-found h2 {
+    font-size: 26px;
+  }
+}
+
+
+/* iPhone 4-4S-5 Portrait - 320 x 568 */
+
+@media only screen and (max-width: 450px) {
+  .inside {
+    width: 250px;
+  }
+  .select2 {
+    width: 250px !important;
+  }
+  .pp-desc, 
+  footer .pp-desc {
+    width: 75%;
+  }
+  .home-content,
+  .author-desc, 
+  .comment-details {
+    width: 100%;
+    background: #f2f2f2;
+  }
+  .featured-cols, 
+  .members, 
+  .comment-form .fullname, 
+  .comment-form .email-address, 
+  .comment-form .weblink {
+    margin-bottom: 20px;
+  }
+  .children { 
+    margin-left: 10px;
+  }
+}

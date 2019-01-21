@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+		<div class="container">
+			<div class="featured-top clearfix">
+				<div class="row">
+
+					<div class="col-md-4">
+						<div class="featured-cols">
+							<div class="featured-bg-gradient">&nbsp;</div>
+							<span class="blog-format-gallery">Gallery</span>
+							<img src="{% static 'images/various-project-360x466.jpg' %}" alt="various-project">
+							<div class="featured-desc">
+								<span class="categories"><a href="#">Character Design</a></span>
+								<h4><a href="blog-details.html">Various project of late 2017</a></h4>								
+								<label>
+									<span>admin&nbsp;‐</span>Feb 14, 2017								
+								</label>
+							</div>
+						</div>				
+					</div>
+
+					<div class="col-md-4">
+						<div class="featured-cols">
+							<div class="featured-bg-gradient">&nbsp;</div>
+							<span class="blog-format-default">Image</span>
+							<img src="{% static 'images/super-natural-360x466.jpg' %}" alt="super-natural">
+							<div class="featured-desc">
+							<span class="categories"><a href="#">Graphic Design</a></span>
+							<h4><a href="blog-details.html">Super, Natural British</a></h4>		<label>
+								<span>admin&nbsp;‐</span> Feb 10, 2017								
+							</label>
+							</div>
+						</div>				
+					</div>
+					<div class="col-md-4">
+						<div class="featured-cols cols-last">
+							<div class="featured-bg-gradient">&nbsp;</div>
+							<span class="blog-format-default">Image</span>
+							<img src="{% static 'images/science-kombat-360x466.jpg' %}" alt="science-kombat">
+							<div class="featured-desc">
+								<span class="categories"><a href="#">Graphic Design</a></span>
+								<h4><a href="blog-details.html">Science Kombat</a></h4>
+								<label>
+									<span>admin&nbsp;‐</span> Feb 20, 2017
+								</label>
+							</div>
+						</div>				
+					</div>
+				</div><!-- /.row -->
+			</div><!-- /.featured-top -->
+
+			<div class="tr-ad">
+				<a href="#"><img src="{% static 'images/content-banner.png' %}" alt="Content Banner Advertisements" class="img-fluid"></a>
+			</div>	
+
+			<div class="tr-content">
+				<div class="row">
+					<div class="col-md-8 col-lg-9 tr-sticky">
+						<div class="theiaStickySidebar">
+							<div class="blog-list masonry clearfix">	
+								<div class="row">
+
+									{% for post in post_list %}
+									<div class="col-md-6 col-lg-4">
+										<div class="masonry-item clearfix">
+											<div class="blog-mask">
+												<div class="blog-video">
+													<a href="blog-details.html" class="blog-format-image-hover">
+														<i class="fa fa-external-link fa-3x"></i>
+													</a>
+                                                    <span class="blog-format-video">{{ post.tags.first }}</span>
+                                                    {% if post.image %}
+													    <a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}" alt="Image" class="img-fluid"></a>
+                                                    {% else %}
+                                                        <a href="{{ post.get_absolute_url }}"><img src="{% static 'images/theater-hannover-263x238.jpg' %}" alt="Image" class="img-fluid"></a>
+                                                    {% endif %}
+												</div>
+											</div>
+											<div class="blog-list-desc">
+												<span class="categories">
+                                                    {% if post.category.count %}
+                                                        {% for category in post.category.all %}
+                                                            <a href="#">{{ category }}</a>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        <a href="#">Uncategorized</a>
+                                                    {% endif %}
+												</span>
+												<h4><a href="blog-details.html">{{ post.title }}</a></h4>
+												<label>
+													<span>{{ post.author }} ‐</span> {{ post.created_at }}
+												</label>
+												<p>{{ post.content|striptags|truncatewords:20 }}</p>
+											</div>
+										</div>					
+									</div>
+									{% endfor %}
+
+								</div>
+							</div>
+
+							<div class="home-content">
+								<div id="mc4wp_form_widget-2" class="widget widget_mc4wp_form_widget">
+									<h5>Newsletter</h5>
+									<form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-61" method="post" data-name="theme-form">
+										<div class="mc4wp-form-fields">
+											<label>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</label>
+											<input type="email" name="EMAIL" placeholder="Email Address" required="">
+										  	<input type="submit" value="Subscribe">
+										</div>
+									</form>
+								</div>
+							</div><!-- /.home-content -->	
+
+                            {% if is_paginated %}
+                                <!-- Pagination -->
+                                <div class="pagination clearfix">
+                                    <ul class="page-numbers">
+                                        {% if page_obj.has_previous %}
+                                            <li><a class="prev page-numbers" href="?page={{ page_obj.previous_page_number }}"></a></li>
+                                        {% else %}
+{#                                            <li><a class="prev page-numbers" href="#"></a></li>#}
+                                        {% endif %}
+                                        {% for i in paginator.page_range %}
+                                            {% if page_obj.number == i %}
+                                                <li><span class="page-numbers current">{{ i }}</span></li>
+                                            {% else %}
+                                                <li><a class="page-numbers" href="?page={{ i }}">{{ i }}</a></li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if page_obj.has_next %}
+                                            <li><a class="next page-numbers" href="?page={{ page_obj.next_page_number }}"></a></li>
+                                        {% else %}
+{#                                            <li><a class="next page-numbers" href="#"></a></li>#}
+                                        {% endif %}
+                                    </ul>
+                                </div><!-- /.pagination -->
+                            {% endif %}
+
+						</div><!-- /.theiaStickySidebar -->
+					</div>
+
+
+					{% include 'template_snippets/sidebar.html' %}
+
+
+				</div><!-- /.row -->
+
+			</div><!-- /.tr-content -->						
+		</div><!-- /.container -->
+					
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+		<div class="container">		
+			<div class="tr-content">
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-3">			
+						<div class="login-page">		
+							<div class="login-form">
+								<h2>Login</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+								<form method="POST" id="homeland-loginform" name="desilog-loginform">
+
+									{% csrf_token %}
+
+									{% for hidden in form.hidden_fields %}
+										{{ hidden }}
+									{% endfor %}
+
+									<div class="form-group">
+										{% render_field form.username class="form-control" placeholder=form.username.label %}
+										<i class="fa fa-user"></i>
+										{% for error in form.username.errors %}
+											<span class="help-block">{{ error }}</span>
+										{% endfor %}
+									</div>
+
+									<div class="form-group">
+										{% render_field form.password class="form-control" placeholder=form.password.label %}
+										<i class="fa fa-unlock-alt"></i>
+										{% for error in form.password.errors %}
+											<span class="help-block">{{ error }}</span>
+										{% endfor %}
+									</div>
+
+									<div class="login-links clearfix">
+										<div class="log-links">
+											<label><input type="checkbox" value="forever" id="rememberme" name="rememberme">
+											Remember Me	</label>
+											<a href="#" title="Lost Password"><i class="fa fa-key"></i>Forgot your Password?</a>
+										</div>
+										<div class="login-submit">
+										<input type="submit" value="Sign In" class="button-primary" id="wp-submit" name="wp-submit">
+										</div>
+									</div>
+								</form>
+							</div>
+						</div><!-- /.login-page -->
+					</div>
+				</div><!-- /.row -->
+			</div><!-- /.tr-content -->						
+		</div><!-- /.container -->
+
+
+{% endblock %}

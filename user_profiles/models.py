@@ -8,7 +8,7 @@ class UserProfileManager(UserManager):
 class UserProfile(AbstractUser):
     profile_image = models.ImageField(upload_to='profile_images', null=True, blank=True)
 
-    objects = UserProfileManager()
+    # objects = UserProfileManager()
 
     def __str__(self):
         return self.username

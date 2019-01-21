@@ -1,0 +1,113 @@
+{% load static %}
+
+<div class="col-md-4 col-lg-3 tr-sticky">
+    <div class="sidebar theiaStickySidebar">
+        <div class="widget widget_text">
+            <h5>Advertise Here</h5>
+            <div class="textwidget">
+                <a href="#"><img src="{% static 'images/ads_one.jpg' %}" alt="Sidebar Banner Advertisements" class="img-fluid"></a>
+            </div>
+        </div>
+
+        <div class="widget desilog_widget-popular-posts">
+            <h5>Popular Posts</h5>
+            <ul>
+                {% for post in popular_posts %}
+                    <li>
+                        <div class="clearfix">
+                            <div class="pp-image">
+                                {% if post.image %}
+                                    <a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid"></a>
+                                {% else %}
+                                    <a href="{{ post.get_absolute_url }}"><img src="{% static 'images/new-illustrations-late-2015-43x39.jpg' %}" alt="{{ post.title }}" class="img-fluid"></a>
+                                {% endif %}
+                            </div>
+                            <div class="pp-desc">
+                                {% if post.category.first %}
+                                    <span class="pp-categories"><a href="{{ post.category_set.first.get_absolute_url }}">{{ post.category.first }}</a></span>
+                                {% else %}
+                                    <span class="pp-categories"><a href="{% url 'home' %}">Uncategorised</a></span>
+                                {% endif %}
+                                {% if post.publication_date %}
+                                    <span class="pp-date">{{ post.publication_date }}</span>
+                                {% else %}
+                                    <span class="pp-date">{{ post.created_at }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="widget widget_calendar">
+            <h5>Calendar</h5>
+            <div id="calendar_wrap" class="calendar_wrap">
+                <table id="wp-calendar">
+                    <caption>February 2017</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" title="Monday">M</th>
+                            <th scope="col" title="Tuesday">T</th>
+                            <th scope="col" title="Wednesday">W</th>
+                            <th scope="col" title="Thursday">T</th>
+                            <th scope="col" title="Friday">F</th>
+                            <th scope="col" title="Saturday">S</th>
+                            <th scope="col" title="Sunday">S</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td colspan="2" class="pad">&nbsp;</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+                        </tr>
+                        <tr>
+                            <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td>
+                        </tr>
+                        <tr>
+                            <td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td>
+                        </tr>
+                        <tr>
+                            <td id="today">20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td>
+                        </tr>
+                        <tr>
+                            <td>27</td><td>28</td>
+                            <td class="pad" colspan="5">&nbsp;</td>
+                        </tr>
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" id="prev"><a href="#">« Apr</a></td>
+                            <td class="pad">&nbsp;</td>
+                            <td colspan="3" id="next" class="pad">&nbsp;</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <div class="widget widget_categories">
+            <h5>Categories</h5>
+            <ul>
+                {% for category in categories %}
+                    <li><a href="{{ category.get_absolute_url }}">{{ category.name }}<span> {{ category.post_set.count }}</span></a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="widget widget_tag_cloud">
+            <h5>Tags</h5>
+            <div>
+                {% for tag in tags %}
+                    {% if forloop.counter <= 2 %}
+                        <a href="{{ tag.get_absolute_url }}" class="tag-link">{{ tag.name }}</a>
+                    {% else %}
+                        <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div><!-- /.sidebar -->
+</div>
