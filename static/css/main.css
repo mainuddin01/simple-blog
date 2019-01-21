@@ -1648,11 +1648,7 @@ footer .widget,
     margin-right: 10px;
 }
 
-.sidebar .pp-image {
-	max-width: 45px;
-}
-
-.clone img {
+.sidebar .pp-image, .prev-post img, .clone img {
 	max-width: 45px;
 }
 

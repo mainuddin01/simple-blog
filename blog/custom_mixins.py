@@ -8,3 +8,5 @@ class SidebarDataMixin(object):
         context['categories'] = Category.objects.all()
         context['tags'] = Tag.objects.all()
         return context
+
+        ## I want first 3 categorie which has more visits

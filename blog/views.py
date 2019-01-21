@@ -3,6 +3,7 @@ from django.views.generic import View, ListView, CreateView, DetailView, UpdateV
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.db.models import Q
 
 from .forms import PostForm
 from .models import Post, Category, Tag, Comment
@@ -35,13 +36,18 @@ class PostEditView(UpdateView):
     form_class = PostForm
     success_url = reverse_lazy('home')
 
-class PostDetailView(DetailView):
+class PostDetailView(SidebarDataMixin, DetailView):
     model = Post
 
     def get(self, *args, **kwargs):
         self.object = self.get_object()
         self.object.post_visited()
         context = self.get_context_data(object=self.object)
+        try:
+            context['previous_post'] = Post.objects.filter(pk__lt=self.object.pk).order_by('-pk')[0]
+        except:
+            context['previous_post'] = Post.objects.last()
+        context['recommended_post'] =  Post.objects.filter(author_id=self.object.author.id).all().order_by('?')[:3]
         return self.render_to_response(context)
 
 

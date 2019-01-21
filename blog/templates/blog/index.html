@@ -3,53 +3,31 @@
 {% load static %}
 
 {% block content %}
-
 		<div class="container">
 			<div class="featured-top clearfix">
 				<div class="row">
-
-					<div class="col-md-4">
-						<div class="featured-cols">
-							<div class="featured-bg-gradient">&nbsp;</div>
-							<span class="blog-format-gallery">Gallery</span>
-							<img src="{% static 'images/various-project-360x466.jpg' %}" alt="various-project">
-							<div class="featured-desc">
-								<span class="categories"><a href="#">Character Design</a></span>
-								<h4><a href="blog-details.html">Various project of late 2017</a></h4>								
-								<label>
-									<span>admin&nbsp;‐</span>Feb 14, 2017								
-								</label>
-							</div>
-						</div>				
-					</div>
-
-					<div class="col-md-4">
-						<div class="featured-cols">
-							<div class="featured-bg-gradient">&nbsp;</div>
-							<span class="blog-format-default">Image</span>
-							<img src="{% static 'images/super-natural-360x466.jpg' %}" alt="super-natural">
-							<div class="featured-desc">
-							<span class="categories"><a href="#">Graphic Design</a></span>
-							<h4><a href="blog-details.html">Super, Natural British</a></h4>		<label>
-								<span>admin&nbsp;‐</span> Feb 10, 2017								
-							</label>
-							</div>
-						</div>				
-					</div>
-					<div class="col-md-4">
-						<div class="featured-cols cols-last">
-							<div class="featured-bg-gradient">&nbsp;</div>
-							<span class="blog-format-default">Image</span>
-							<img src="{% static 'images/science-kombat-360x466.jpg' %}" alt="science-kombat">
-							<div class="featured-desc">
-								<span class="categories"><a href="#">Graphic Design</a></span>
-								<h4><a href="blog-details.html">Science Kombat</a></h4>
-								<label>
-									<span>admin&nbsp;‐</span> Feb 20, 2017
-								</label>
-							</div>
-						</div>				
-					</div>
+                    {% for category in categories %}
+                        {% if forloop.counter < 4 %}
+                            <div class="col-md-4">
+                                <div class="featured-cols">
+                                    <div class="featured-bg-gradient">&nbsp;</div>
+                                    <span class="blog-format-gallery">{{ category.post_set.first.tags.first.name }}</span>
+                                    {% if category.post_set.first.image %}
+                                        <img src="{{ category.post_set.first.image.url }}" alt="{{ category.post_set.first.title }}">
+                                    {% else %}
+                                        <img src="{% static 'images/various-project-360x466.jpg' %}" alt="{{ category.post_set.first.title }}">
+                                    {% endif %}
+                                    <div class="featured-desc">
+                                        <span class="categories"><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></span>
+                                        <h4><a href="{{ category.post_set.first.get_absolute_url }}">{{ category.post_set.first.title }}</a></h4>
+                                        <label>
+                                            <span>{{ category.post_set.first.author }}&nbsp;‐</span>{% if category.post_set.first.publication_date %}{{ category.post_set.first.publication_date }}{% else %}{{ category.post_set.first.created_at }}{% endif %}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
 				</div><!-- /.row -->
 			</div><!-- /.featured-top -->
 
@@ -87,10 +65,10 @@
                                                             <a href="#">{{ category }}</a>
                                                         {% endfor %}
                                                     {% else %}
-                                                        <a href="#">Uncategorized</a>
+                                                        <span class="categories"><a href="#">Uncategorized</a></span>
                                                     {% endif %}
 												</span>
-												<h4><a href="blog-details.html">{{ post.title }}</a></h4>
+												<h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
 												<label>
 													<span>{{ post.author }} ‐</span> {{ post.created_at }}
 												</label>
