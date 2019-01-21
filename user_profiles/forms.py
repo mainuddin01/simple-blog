@@ -7,10 +7,10 @@ class UserCreateForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = UserProfile
-        fields = ('first_name', 'last_name', 'email', 'username', 'password1', 'password2', 'profile_image')
+        fields = ('first_name', 'last_name', 'email', 'username', 'password1', 'password2', 'profile_image', 'biography')
 
 class UserEditForm(UserChangeForm):
 
     class Meta(UserChangeForm.Meta):
         model = UserProfile
-        fields = ('first_name', 'last_name', 'email', 'profile_image')
+        fields = ('first_name', 'last_name', 'email', 'profile_image', 'biography')

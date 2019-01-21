@@ -18,13 +18,13 @@ class UserUpdateView(UpdateView):
     model = get_user_model()
     # fields = ('first_name', 'last_name', 'email', 'profile_image')
     form_class = UserEditForm
-    success_url = reverse_lazy('blog:home')
+    success_url = reverse_lazy('home')
     template_name = 'user_profiles/user_update.html'
 
 class UserListView(ListView):
     model = get_user_model()
-    template_name = 'home'
+    template_name = 'index.html'
 
 class UserDetailView(DetailView):
     model = get_user_model()
-    template_name = 'home'
+    template_name = 'index.html'
