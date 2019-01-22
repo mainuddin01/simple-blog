@@ -8,6 +8,7 @@ from django.db.models import Q
 from itertools import chain
 
 from .forms import PostForm
+from newsletter.forms import NewsUserForm
 from .models import Post, Category, Tag, Comment
 from .custom_mixins import SidebarDataMixin, get_sidebar_data
 
@@ -23,6 +24,11 @@ class HomePageView(SidebarDataMixin, ListView):
     template_name = 'blog/index.html'
     queryset = model.objects.all()
     paginate_by = 4
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['form'] = NewsUserForm()
+        return context
 
 class PostCreateView(CreateView):
     model = Post
@@ -87,7 +93,7 @@ class TagDetailView(DetailView):
 
 
 
-class SearchView(SidebarDataMixin, View):
+class SearchView(View):
 
     def get(self, request, *args, **kwargs):
         query_string = request.GET.get('q', None)

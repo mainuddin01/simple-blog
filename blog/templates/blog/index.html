@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load widget_tweaks %}
+
 {% block content %}
 		<div class="container">
 			<div class="featured-top clearfix">
@@ -84,10 +86,18 @@
 							<div class="home-content">
 								<div id="mc4wp_form_widget-2" class="widget widget_mc4wp_form_widget">
 									<h5>Newsletter</h5>
-									<form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-61" method="post" data-name="theme-form">
+									<form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-61" method="POST" action="{% url 'newsletter:subscribe' %}" data-name="theme-form">
+                                        {% csrf_token %}
+
+                                        {% for hidden in form.hidden_fields %}
+                                            {{ hidden }}
+                                        {% endfor %}
 										<div class="mc4wp-form-fields">
 											<label>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</label>
-											<input type="email" name="EMAIL" placeholder="Email Address" required="">
+                                            {% render_field form.email placeholder=form.email.label %}
+                                            {% for error in form.email.errors %}
+                                                <span class="help-block">{{ error }}</span>
+                                            {% endfor %}
 										  	<input type="submit" value="Subscribe">
 										</div>
 									</form>

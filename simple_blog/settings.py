@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # our apps
     'user_profiles',
     'blog',
+    'newsletter',
 ]
 
 
@@ -146,3 +147,10 @@ LOGIN_URL = 'user_profiles:login'
 LOGIN_REDIRECT_URL = 'home'
 
 LOGOUT_REDIRECT_URL = 'user_profiles:login'
+
+
+EMAIL_HOST='in-v3.mailjet.com'
+EMAIL_HOST_USER='dbcd9493d3a42c21e3f8cf8909fa5575'
+EMAIL_HOST_PASSWORD='4495fad4ca175606833b1ff7848700dc'
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
