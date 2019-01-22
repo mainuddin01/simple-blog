@@ -10,3 +10,10 @@ class SidebarDataMixin(object):
         return context
 
         ## I want first 3 categorie which has more visits
+
+def get_sidebar_data():
+    context = {}
+    context['popular_posts'] = Post.objects.all().order_by('-visited')[:4]
+    context['categories'] = Category.objects.all()
+    context['tags'] = Tag.objects.all()
+    return context

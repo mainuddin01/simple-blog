@@ -9,7 +9,7 @@ from itertools import chain
 
 from .forms import PostForm
 from .models import Post, Category, Tag, Comment
-from .custom_mixins import SidebarDataMixin
+from .custom_mixins import SidebarDataMixin, get_sidebar_data
 
 from user_profiles.models import UserProfile
 
@@ -110,6 +110,10 @@ class SearchView(SidebarDataMixin, View):
 
             result = list(chain(post_list, category_list, tag_list, author_list))
 
-        return render(request, 'blog/search_results.html', {'query_string': query_string, 'result': result})
+            context = get_sidebar_data()
+            context['query_string'] = query_string
+            context['result'] = result
+
+        return render(request, 'blog/search_results.html', context)
 
 
