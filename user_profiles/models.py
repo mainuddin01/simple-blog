@@ -18,7 +18,7 @@ class UserProfile(AbstractUser):
     def __str__(self):
         return self.username
 
-class UserSocialLinks(models.Model):
+class UserSocialLink(models.Model):
     SOCIAL_CHOICES = (
         ('facebook', 'Facebook'),
         ('twitter', 'Twitter'),

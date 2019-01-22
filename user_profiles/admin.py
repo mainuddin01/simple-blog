@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import UserCreateForm, UserEditForm
-from .models import UserProfile, UserSocialLinks
+from .models import UserProfile, UserSocialLink
 
 # Register your models here.
 class UserProfileAdmin(UserAdmin):
@@ -19,4 +19,4 @@ class UserProfileAdmin(UserAdmin):
     form = UserEditForm
 
 admin.site.register(UserProfile, UserProfileAdmin)
-admin.site.register(UserSocialLinks)
+admin.site.register(UserSocialLink)
