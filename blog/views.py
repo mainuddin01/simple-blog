@@ -5,9 +5,13 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Q
 
+from itertools import chain
+
 from .forms import PostForm
 from .models import Post, Category, Tag, Comment
 from .custom_mixins import SidebarDataMixin
+
+from user_profiles.models import UserProfile
 
 # Create your views here.
 # class HomePageView(View):
@@ -80,4 +84,32 @@ class TagUpdateView(LoginRequiredMixin, UpdateView):
 
 class TagDetailView(DetailView):
     model = Tag
+
+
+
+class SearchView(SidebarDataMixin, View):
+
+    def get(self, request, *args, **kwargs):
+        query_string = request.GET.get('q', None)
+        result = None
+        if query_string:
+            post_list = Post.objects.filter(
+                Q(title__icontains=query_string) |
+                Q(content__icontains=query_string) |
+                Q(category__name__icontains=query_string) |
+                Q(tags__name__icontains=query_string)
+            ).all().distinct()
+            category_list = Category.objects.filter(name__icontains=query_string).all().distinct()
+            tag_list = Tag.objects.filter(name__icontains=query_string).all().distinct()
+            author_list = UserProfile.objects.filter(
+                Q(first_name__icontains=query_string) |
+                Q(last_name__icontains=query_string) |
+                Q(username__icontains=query_string) |
+                Q(email__icontains=query_string)
+            ).all().distinct()
+
+            result = list(chain(post_list, category_list, tag_list, author_list))
+
+        return render(request, 'blog/search_results.html', {'query_string': query_string, 'result': result})
+
 

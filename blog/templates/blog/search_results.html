@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+		<div class="container">		
+			<div class="tr-content">
+				<div class="row">
+					<div class="col-md-8 col-lg-9 tr-sticky">
+						<div class="theiaStickySidebar">
+							<div class="breadcrumbs">
+								<a href="{% url 'home' %}">Home</a>
+								<span>/&nbsp;</span>Blog Details
+                                <strong class="pull-right text-xl">Showing results for "{{ query_string }}". Found {{ result|length }} matches</strong>
+							</div>										
+							<div class="blog-post">
+
+
+
+                                {% for item in result %}
+                                    <h2><a href="{{ item.get_absolute_url }}">{{ item }}</a></h2>
+                                {% endfor %}
+
+							</div>							
+						</div><!-- /.theiaStickySidebar -->
+					</div>
+
+					{% include 'template_snippets/sidebar.html' %}
+
+				</div><!-- /.row -->
+
+			</div><!-- /.tr-content -->						
+		</div><!-- /.container -->
+
+{% endblock %}

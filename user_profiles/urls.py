@@ -13,4 +13,5 @@ urlpatterns = [
     path('register/', views.UserCreateView.as_view(), name='register'),
     path('<int:pk>/detail/', views.UserDetailView.as_view(), name='detail'),
     path('<int:pk>/edit/', views.UserUpdateView.as_view(), name='edit'),
+    path('<int:pk>/social_link/create', views.UserSocialLinkCreateView.as_view(), name='add_social'),
 ]
