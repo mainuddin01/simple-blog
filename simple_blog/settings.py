@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'user_profiles',
     'blog',
     'newsletter',
+    'site_settings',
 ]
 
 
@@ -78,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'simple_blog.simple_context_processor.simple_context',
             ],
         },
     },

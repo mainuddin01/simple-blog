@@ -3,8 +3,6 @@ from django.contrib.auth import get_user_model
 from django.utils.text import slugify
 from django.urls import reverse
 
-import misaka
-
 User = get_user_model()
 
 # Create your models here.
@@ -13,7 +11,6 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(null=True, blank=True, unique=True)
     content = models.TextField()
-    # html_content = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='post_images', null=True, blank=True)
     category = models.ManyToManyField('Category')
     tags = models.ManyToManyField('Tag')
@@ -29,11 +26,10 @@ class Post(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
-        # self.html_content = misaka.html(self.content)
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('blog:detail', kwargs={'pk': self.pk})
+        return reverse('blog:detail', kwargs={'slug': self.slug})
 
     def __str__(self):
         return self.title
@@ -73,10 +69,14 @@ class Tag(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey('Post', on_delete=models.CASCADE)
     message = models.TextField()
-    name = models.CharField(max_length=50)
-    email = models.EmailField()
+    name = models.CharField(max_length=50, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
     website = models.URLField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     reply = models.ForeignKey('self', null=True, blank=True, related_name='replies', on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('blog:comment_create', kwargs={'slug':self.post.slug})
 
     def __str__(self):
         return self.message

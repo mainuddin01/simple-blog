@@ -5,7 +5,11 @@
         <div class="widget widget_text">
             <h5>Advertise Here</h5>
             <div class="textwidget">
-                <a href="#"><img src="{% static 'images/ads_one.jpg' %}" alt="Sidebar Banner Advertisements" class="img-fluid"></a>
+                {% if site_data.header_ad %}
+                    {{ site_data.sidebar_ad|safe }}
+                {% else %}
+                    <a href="#"><img src="{% static 'images/ads_one.jpg' %}" alt="Sidebar Banner Advertisements" class="img-fluid"></a>
+                {% endif %}
             </div>
         </div>
 

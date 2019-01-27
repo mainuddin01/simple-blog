@@ -2469,3 +2469,20 @@ img.mfp-img {
 .orange-color {
     color: #f26522 !important;
 }
+
+.blog-image > img {
+	width: 100%;
+}
+
+.contact-form {
+	overflow: hidden;
+}
+
+.comment-form .card {
+    clear: both;
+    margin-top: 25px;
+}
+
+.comment-form .card-inner{
+    margin-left: 4rem;
+}

@@ -34,7 +34,11 @@
 			</div><!-- /.featured-top -->
 
 			<div class="tr-ad">
-				<a href="#"><img src="{% static 'images/content-banner.png' %}" alt="Content Banner Advertisements" class="img-fluid"></a>
+                {% if site_data.header_ad %}
+                    {{ site_data.middle_ad|safe }}
+                {% else %}
+				    <a href="#"><img src="{% static 'images/content-banner.png' %}" alt="Content Banner Advertisements" class="img-fluid"></a>
+                {% endif %}
 			</div>	
 
 			<div class="tr-content">

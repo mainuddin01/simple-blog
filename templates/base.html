@@ -9,7 +9,7 @@
 		<meta name="author" content="Theme Region">
 		<meta name="description" content="">
 
-		<title>Desilog | Blog and File Resource HTML Theme </title>
+		<title>{{ site_data.name }} | {{ site_data.slogan }} </title>
 
 		<!-- CSS -->
 		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -24,7 +24,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Raleway:200,200i,300,300i,400,500,600,700,800,900" rel="stylesheet">
 
 		<!-- icons -->
-		<link rel="icon" href="images/ico/favicon.ico">
+		<link rel="icon" href="{% if site_data.favicon %}{{ site_data.favicon.url }}{% else %}{% static 'images/ico/favicon.ico' %}{% endif %}">
 		<link rel="apple-touch-icon" sizes="144x144" href="../images/ico/apple-touch-icon-144.html">
 		<link rel="apple-touch-icon" sizes="114x114" href="../images/ico/apple-touch-icon-114.html">
 		<link rel="apple-touch-icon" sizes="72x72" href="../images/ico/apple-touch-icon-72.html">
@@ -41,14 +41,18 @@
 	</head>
 	<body class="tr-homepage">
 		<div class="top-banner">
-			<a href="#"><img src="{% static 'images/top-banner.png' %}" alt="Top Banner Advertisements"></a>
+            {% if site_data.header_ad %}
+                {{ site_data.header_ad|safe }}
+            {% else %}
+			    <a href="#"><img src="{% static 'images/top-banner.png' %}" alt="Top Banner Advertisements"></a>
+            {% endif %}
 		</div>
 
 		<div class="container">
 			<div class="logo-search header-two clearfix">
 				<div class="logo">
 					<h1>
-						<a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="Desilog" title="Desilog">
+						<a href="{% url 'home' %}"><img src="{% if site_data.logo %}{{ site_data.logo.url }}{% else %}{% static 'images/logo.png' %}{% endif %}" alt="Desilog" title="Desilog">
 						</a>
 					</h1>
 				</div>
@@ -161,8 +165,8 @@
 							<div class="">
 								<div class="widget widget_text">
 									<div class="textwidget">
-										<a href="index.html"><img src="{% static 'images/footer-logo.png' %}" alt="Desilog"></a>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+										<a href="index.html"><img src="{% if site_data.footer_logo %}{{ site_data.footer_logo.url }}{% else %}{% static 'images/footer-logo.png' %}{% endif %}" alt="Desilog"></a>
+										<p>{{ site_data.footer_text }}</p>
 									</div>
 								</div>
 							</div>
@@ -193,7 +197,7 @@
 				</div><!-- /.footer-widget -->
 
 				<div class="clearfix">
-					<label class="copyright">&copy;&nbsp;2017&nbsp;<a href="#">Desilog</a>&nbsp;‐&nbsp;All Rights Reserved</label>
+					<label class="copyright">{% if site_data.copyright %}{{ site_data.copyright }}{% else %}&copy;&nbsp;2017&nbsp;<a href="#">Desilog</a>&nbsp;‐&nbsp;All Rights Reserved{% endif %}</label>
 					<div class="footer-menu">
 						<ul id="menu-footer-menu" class="clearfix">
 							<li><a href="index.html">Home</a></li>
