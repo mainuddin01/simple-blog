@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'user_profiles',
     'blog',
     'newsletter',
+    'site_settings',
 ]
 
 
